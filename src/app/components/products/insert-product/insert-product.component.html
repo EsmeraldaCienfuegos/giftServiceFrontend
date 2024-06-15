@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <form [formGroup]="form">
+            <h2 class="m-3">{{titulo}} Producto</h2>
+            <mat-dialog-content class="contend">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field>
+                            <mat-label>Insert the Name</mat-label>
+                            <input matInput formControlName="name">
+                            <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre es es
+                                obligatoria.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Insert the price</mat-label>
+                            <input type="number" matInput formControlName="price">
+
+                            <mat-error *ngIf="form.get('price')?.hasError('required')">El precio es es
+                                obligatoria.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Insert the description</mat-label>
+                            <input matInput formControlName="description">
+                            <mat-error *ngIf="form.get('description')?.hasError('required')">La descriptiones es
+                                obligatoria.</mat-error>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-md-6">
+                        <!-- category, entrepreneurship -->
+                        <mat-form-field>
+                            <mat-label>Insert the stock</mat-label>
+                            <input type="number" matInput formControlName="stock">
+                            <mat-error *ngIf="form.get('stock')?.hasError('required')">El stock es
+                                obligatoria.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Categorias</mat-label>
+                            <mat-select formControlName="category">
+                                <mat-option *ngFor="let c of listCategory" [value]="c.id">
+                                    {{c.nameCategory}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.get('category')?.hasError('required')">La categoria es
+                                obligatoria.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Entrepreneurship</mat-label>
+                            <mat-select formControlName="entrepreneurship">
+                                <mat-option *ngFor="let c of listEnterpre" [value]="c.id">
+                                    {{c.nameEntrepreneurship}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="form.get('entrepreneurship')?.hasError('required')">El emprendedor es
+                                esobligatoria.</mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </mat-dialog-content>
+
+            <mat-dialog-actions>
+                <button mat-raised-button [mat-dialog-close] [disabled]="form.invalid" color="primary"
+                    (click)="register()">{{titulo}}</button>
+                <button mat-raised-button [mat-dialog-close] color="warn">Cancel</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

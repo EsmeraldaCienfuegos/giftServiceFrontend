@@ -1,0 +1,15 @@
+
+
+<div class="container">
+    <h3>Productos en Venta</h3>
+    <div class="row">
+        <div class="col-3" *ngFor="let product of liststProducts">
+            <mat-card>
+                <img mat-card-image [src]="product.imageRoute" alt="Image of {{ product.nameProduct }}">
+                <mat-card-content>{{ product.nameProduct }}</mat-card-content>
+                <mat-card-content>{{ product.descriptionProduct }}</mat-card-content>
+                <mat-card-content>S/{{ product.priceProduct }}</mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

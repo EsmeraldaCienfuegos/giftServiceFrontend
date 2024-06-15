@@ -1,0 +1,98 @@
+<div class="title-container">
+  <div>
+    <h1>{{titulo}} Compra</h1>
+  </div>
+    <form [formGroup]="form" (submit)="create()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Precio</mat-label>
+        <input matInput formControlName="precio">
+        <mat-error *ngIf="form.get('precio')?.hasError('required')">El precio es
+            obligatorio.</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Fecha de Compra</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fecha" [max]="pllmaxfecha">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="form.get('fecha')?.hasError('required')">La fecha es obligatoria.</mat-error>  
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option *ngFor="let g of listaestadocompra" [value]="g.value">
+            {{ g.viewValue }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('estado')?.hasError('required')">El estado es obligatorio.</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Dirección</mat-label>
+        <textarea matInput
+          placeholder="direccion"
+          formControlName="direccion"
+        ></textarea>
+        <mat-error *ngIf="form.get('direccion')?.hasError('required')"
+          >La dirección es obligatoria.</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de entrega</mat-label>
+        <mat-select formControlName="tipodeEntrega">
+          <mat-option *ngFor="let c of listadeentrega" [value]="c.idDeliveryType">
+            {{ c.nameDeliveryType }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipodeEntrega')?.hasError('required')"
+          >El tipo de entrega es obligatoria.</mat-error
+        >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de pago</mat-label>
+        <mat-select formControlName="tipodePago">
+          <mat-option *ngFor="let c of listatiposdepago" [value]="c.idPayment_Type">
+            {{ c.namePayment_Type }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipodePago')?.hasError('required')"
+          >El tipo de pago es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de recibo</mat-label>
+        <mat-select formControlName="tipodeRecibo">
+          <mat-option *ngFor="let c of listarecibo" [value]="c.idReceipt_Type">
+            {{ c.nameReceipt_Type }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('tipodeRecibo')?.hasError('required')"
+          >El tipo de recibo es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          <mat-option *ngFor="let c of listaususarios" [value]="c.idUser">
+            {{ c.realname }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('usuario')?.hasError('required')"
+          >El usuario es obligatorio.</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <div class="container-button">
+      <button mat-raised-button color="primary">Aceptar</button>
+      <button mat-raised-button color="warn" routerLink="/compras">
+        Cancelar
+      </button>
+      </div>
+    </form>
+</div>
+  

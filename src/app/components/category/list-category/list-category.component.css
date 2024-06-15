@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+    text-align: center;
+}
+.container{
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.filter-add{
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter{
+    width: 50%;
+}
+button{
+    margin: 2px 0;
+}

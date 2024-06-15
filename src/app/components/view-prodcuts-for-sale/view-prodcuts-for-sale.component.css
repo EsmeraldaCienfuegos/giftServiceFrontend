@@ -1,0 +1,35 @@
+.container {
+    margin-top: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+}
+.col-3 {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    min-width: 200px;
+}
+
+mat-card {
+    width: 250px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 200px;
+}
+
+mat-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+mat-card-content {
+    margin-top: 10px;
+}

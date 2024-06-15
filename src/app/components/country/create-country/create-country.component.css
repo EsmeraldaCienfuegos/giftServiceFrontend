@@ -1,0 +1,28 @@
+.title-container {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    color: #333;
+}
+  
+mat-form-field {
+    width: 70%;
+}
+
+.botonRegistrarPais{
+    background-color: #27f8ff;
+    color: #273b37
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}

@@ -1,0 +1,48 @@
+<div class="title-container">
+    <div>
+      <h1>{{titulo}} Detalle de Comprar</h1>
+    </div>
+      <form [formGroup]="form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Precio Total</mat-label>
+          <input matInput formControlName="amounttotal">
+          <mat-error *ngIf="form.get('amounttotal')?.hasError('required')">El precio es
+              obligatorio.
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>Cantidad de producto</mat-label>
+          <input matInput formControlName="cantidad">
+          <mat-error *ngIf="form.get('cantidad')?.hasError('required')">La cantidad es
+              obligatoria.
+          </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="example-full-width">
+          <mat-label for="compra">Id Compra</mat-label>
+          <mat-select id="compra" formControlName="compra">
+            <mat-option *ngFor="let c of listaCompras" [value]="c.idPurchase">
+              {{ c.idPurchase }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('compra')?.hasError('required')">Debe asignar una compra</mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="example-full-width">
+          <mat-label for="producto">Producto</mat-label>
+          <mat-select id="producto" formControlName="producto">
+            <mat-option *ngFor="let c of listaproductos" [value]="c.idProduct">
+              {{ c.nameProduct }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="form.get('producto')?.hasError('required')">Debe asignar un producto</mat-error>
+        </mat-form-field>
+        <br/>
+        <div class="button-container">
+          <button mat-raised-button class="botonRegistrarPDetail" (click)="create()">{{titulo}}</button> 
+          <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+        </div>
+      </form>
+  </div>
+    

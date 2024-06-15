@@ -1,0 +1,46 @@
+.toolbar {
+  background-color: #db1718;
+  padding-left: 2rem;
+}
+  
+.spacer {
+  flex: 1 1 auto;
+}
+  
+.sidebar {
+  background-color: #ffe2e2;
+  height: 93vh;
+  width: 25vh;
+  padding-top: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+  }
+  
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+  
+.sidebar nav ul li {
+    margin-bottom: 1rem;
+}
+  
+
+.sidebar nav ul li button {
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+  color: #535353;
+}
+  
+.sidebar nav ul li button:hover,
+.sidebar nav ul li button:active {
+  color: #ec3740;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}

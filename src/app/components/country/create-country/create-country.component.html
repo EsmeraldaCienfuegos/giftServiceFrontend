@@ -1,0 +1,16 @@
+<div class="title-container ">
+  <div><h1>{{titulo}} País</h1></div>
+  <form [formGroup]="form">
+    <mat-form-field>
+      <mat-label>País</mat-label>
+      <input matInput formControlName="nombre" />
+      <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre del país es obligatorio.</mat-error>
+      <mat-error *ngIf="form.get('nombre')?.hasError('pattern')">El nombre del país solo puede contener letras y espacios.</mat-error>
+    </mat-form-field>
+    <br/>
+    <div class="button-container">
+      <button mat-raised-button class="botonRegistrarPais" (click)="registrar()">{{titulo}}</button>
+      <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+    </div>
+  </form>
+</div>

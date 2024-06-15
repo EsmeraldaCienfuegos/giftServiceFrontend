@@ -1,0 +1,36 @@
+.container {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 50px 10px 10px 10px;
+}
+
+.title-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+img {
+    max-width: 3cm;
+    max-height: 3cm;
+    object-fit: cover;
+    padding: 10px;
+}
+
+.button-spacing {
+    margin: 0 5px;
+}
+
+.small-icon mat-icon {
+    font-size: 5px;
+}

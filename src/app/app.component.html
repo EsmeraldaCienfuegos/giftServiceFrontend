@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="toolbar" >
+  <span>GIFT SERVICE</span>
+  <span class="spacer"></span>
+  <button mat-icon-button aria-label="UserWeb">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-2 sidebar">
+      <nav>
+        <ul>
+          <li><button mat-button routerLink="/moduloUbicacion" >Ubicación</button></li>
+          <li><button mat-button routerLink="/moduloPagos">Modulo de pagos</button></li>
+          <li><button mat-button routerLink="/compras">Compras</button></li>
+          <li><button mat-button routerLink="/detallecompras">Detalle Compra</button></li>
+          <li><button mat-button routerLink="/entrepreneurship">Emprendimiento</button></li>
+          <li><button mat-button routerLink="/personalizedDetail">Detalle Personalizado</button></li>
+          <li><button mat-button routerLink="/notificacion">Notificación</button></li>
+          <li><button mat-button routerLink="/category">Categoria</button></li>
+          <li><button mat-button routerLink="/products" class="btn">Productos</button></li>
+          <li><button mat-button routerLink="/reviews" class="btn">Reseñas</button></li>
+          <li><button mat-button routerLink="/viewsProducts" class="btn">Productos En Venta</button></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

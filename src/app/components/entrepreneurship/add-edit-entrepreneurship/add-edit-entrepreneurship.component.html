@@ -1,0 +1,40 @@
+<div class="container">
+    <h1 mat-dialog-title>New Entrepreneurship</h1>
+    <div>
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <mat-form-field>
+                <mat-label>Entrepreneurship</mat-label>
+                <input matInput formControlName="nameEntrepreneurship" required />
+                @if (form.get("nameEntrepreneurship")?.hasError("required")) {
+                <mat-error>You must enter a entrepreneurship</mat-error>
+                }
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>RUC</mat-label>
+                <input matInput formControlName="rucEntrepreneurship" required />
+                @if (form.get("rucEntrepreneurship")?.hasError("required")) {
+                <mat-error>You must enter a RUC</mat-error>
+                }
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Location</mat-label>
+                <input matInput formControlName="locationEntrepreneurship" required />
+                @if (form.get("locationEntrepreneurship")?.hasError("required")) {
+                <mat-error>You must enter a location</mat-error>
+                }
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput formControlName="phoneEntrepreneurship" required />
+                @if (form.get("phoneEntrepreneurship")?.hasError("required")) {
+                <mat-error>You must enter a phone</mat-error>
+                }
+            </mat-form-field>
+            <br>
+            <button [disabled]="form.invalid" mat-raised-button mat-dialog-close color="primary">Save</button>
+        </form>
+    </div>
+</div>

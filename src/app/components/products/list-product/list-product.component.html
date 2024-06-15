@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="text-center">
+        <h2>PRODUCTOS</h2>
+    </div>
+
+    <div class="mb-3">
+        <button mat-flat-button (click)="OpenModalInsert()" color="primary">Register new</button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.idProduct}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.nameProduct}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef> Price </th>
+            <td mat-cell *matCellDef="let element">{{element.priceProduct}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let element">{{element.descriptionProduct}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="stok">
+            <th mat-header-cell *matHeaderCellDef> Stok </th>
+            <td mat-cell *matCellDef="let element">{{element.stockProduct}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef> Category </th>
+            <td mat-cell *matCellDef="let element">{{element.category.nameCategory}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="entre">
+            <th mat-header-cell *matHeaderCellDef>Entrepreneurship</th>
+            <td mat-cell *matCellDef="let element">{{element.entrepreneurship.nameEntrepreneurship}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="container-ac">
+                    <button class="accioness" mat-raised-button color="primary" (click)="Update(element.idProduct)"
+                        matTooltip="Editar Producto">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button class="accioness" mat-raised-button color="warn" (click)="deletee(element.idProduct)"
+                        matTooltip="Eliminar producto">
+                        <mat-icon>delete_forever</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="imagenes">
+            <th mat-header-cell *matHeaderCellDef>Imagenes</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="container-ac">
+                    <!--[routerLink]="['products/registroImagenes',element.idProduct]" -->
+                    <button class="accioness upload" mat-raised-button (click)="InsertImage(element.idProduct)"
+                        matTooltip="Subir Imagenes">
+                        <mat-icon>add_photo_alternate</mat-icon>
+                    </button>
+                    <button class="accioness" mat-raised-button (click)="EditImage(element.idProduct)"
+                        matTooltip="Editar Imagenes">
+                        <mat-icon>edit_square</mat-icon>
+                    </button>
+                    <button class="accioness" mat-raised-button
+                        [routerLink]="['products/verProducto',element.idProduct]" matTooltip="Ver Imagenes">
+                        <mat-icon>photo_library</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Añadir">
+            <th mat-header-cell *matHeaderCellDef style="text-align: center">
+                AÑADIR PERSONALIZADO
+            </th>
+            <td mat-cell *matCellDef="let element" style="text-align: center">
+                <button mat-fab color="primary" [routerLink]="[
+                  '/products/perzonalizedDetailsProduct/',
+                  element.idProduct
+                ]">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15]" aria-label="Select page">
+    </mat-paginator>
+</div>

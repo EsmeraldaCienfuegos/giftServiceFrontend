@@ -1,0 +1,92 @@
+<button
+  mat-mini-fab
+  matTooltip="Eliminar"
+  color="accent"
+  routerLink="/personalizedDetail/nuevo"
+>
+  <mat-icon class="small-icon">addition</mat-icon>
+</button>
+<div class="container">
+  <div class="title-container">
+    <h2 class="title">Lista de Detalles personalizados</h2>
+  </div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Imagen
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        <img
+          [src]="getImageUrl(element.imagePersonalizedDetail)"
+          alt="Imagen Personalizada"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="emprendimiento">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Emprendimiento
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        {{ element.entrepreneurships?.nameEntrepreneurship }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Descripcion
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        {{ element.namePersonalizedDetail }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="precio">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Precio Adicional
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        {{ element.additionalPricePersonalizedDetail }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Accciones
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        <button
+          mat-mini-fab
+          matTooltip="Editar"
+          color="accent"
+          aria-label="Editar"
+          class="button-spacing"
+          [routerLink]="[
+            '/personalizedDetail/ediciones',
+            element.idPersonalizedDetail
+          ]"
+        >
+          <mat-icon class="small-icon">edit</mat-icon>
+        </button>
+        <button
+          mat-mini-fab
+          matTooltip="Eliminar"
+          color="accent"
+          aria-label="Eliminar"
+          class="button-spacing"
+          (click)="openDialog(element.idPersonalizedDetail)"
+        >
+          <mat-icon class="small-icon">delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="5" 
+    [pageSizeOptions]="[5, 10, 15]" 
+    aria-label="Select page">
+    </mat-paginator>
+</div>

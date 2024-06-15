@@ -1,0 +1,166 @@
+<!-- <div class="container">
+    <h3>Registro de Imagenes</h3>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen Principal</h5>
+                        <label for="imagePrincipal" id="icon-image"
+                            class="btn btn-primary"><mat-icon>cloud_upload</mat-icon></label>
+                        <label *ngIf="previewUrls[0]" class="btn btn-danger"
+                            (click)="ClearImage(0)"><mat-icon>close</mat-icon></label>
+                        
+                            <input id="imagePrincipal" type="file" [hidden]="true" name="imagePrincipal"  
+                        accept="image/*" (change)="onFileSelected($event,0);" formControlName="imagePrincipal">
+                        
+                        <div *ngIf="previewUrls[0]" class="container-img-preview">
+                            <img [src]="previewUrls[0]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 2 Opcional</h5>
+                        <label for="imagen2" id="icon-image" class="btn btn-primary"><mat-icon>cloud_upload</mat-icon></label>
+                        <label *ngIf="previewUrls[1]" class="btn btn-danger" (click)="ClearImage(1)"><mat-icon>close</mat-icon></label>
+                        
+                        <input id="imagen2" [hidden]="true" type="file" name="imagen2" accept="image/*" 
+                        (change)="onFileSelected($event,1);" formControlName="image2">
+                        
+                        <div *ngIf="previewUrls[1]" class="container-img-preview">
+                            <img [src]="previewUrls[1]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 3 Opcional</h5>
+                        <label for="imagen3" id="icon-image"
+                            class="btn btn-primary"><mat-icon>cloud_upload</mat-icon></label>
+                        <label *ngIf="previewUrls[2]" class="btn btn-danger"
+                            (click)="ClearImage(2)"><mat-icon>close</mat-icon></label>
+
+                        <input id="imagen3" [hidden]="true" type="file" name="imagen3" accept="image/*"
+                            (change)="onFileSelected($event,2);" formControlName="image3">
+
+                        <div *ngIf="previewUrls[2]" class="container-img-preview">
+                            <img [src]="previewUrls[2]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 4 Opcional</h5>
+                        <label for="imagen4" id="icon-image" class="btn btn-primary"><mat-icon>cloud_upload</mat-icon></label>
+                        <label *ngIf="previewUrls[3]" class="btn btn-danger" (click)="ClearImage(3)"><mat-icon>close</mat-icon></label>
+                        <input id="imagen4" [hidden]="true" type="file" name="imagen4" accept="image/*" 
+                        (change)="onFileSelected($event,3);" formControlName="image4">
+                        <div *ngIf="previewUrls[3]" class="container-img-preview">
+                            <img [src]="previewUrls[3]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <mat-dialog-actions>
+            <button mat-raised-button [disabled]="ocultarBoton" color="primary" (click)="register()">Registrar</button>
+            <button mat-raised-button [mat-dialog-close] color="warn">Cancel</button>
+            <mat-progress-bar mode="indeterminate" [hidden]="progress_bar"></mat-progress-bar>
+        </mat-dialog-actions>
+    </form>
+</div>
+-->
+
+
+<div class="container">
+    <h3>Registro de Imágenes</h3>
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen Principal</h5>
+                        <label for="imagePrincipal" id="icon-image" class="btn btn-primary">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </label>
+                        <label *ngIf="previewUrls[0]" class="btn btn-danger" (click)="ClearImage(0)">
+                            <mat-icon>close</mat-icon>
+                        </label>
+                        <input id="imagePrincipal" type="file" [hidden]="true" accept="image/*"
+                            (change)="onFileSelected($event, 0);" formControlName="imagePrincipal">
+                        <div *ngIf="previewUrls[0]" class="container-img-preview">
+                            <img [src]="previewUrls[0]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 2 Opcional</h5>
+                        <label for="image2" id="icon-image" class="btn btn-primary">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </label>
+                        <label *ngIf="previewUrls[1]" class="btn btn-danger" (click)="ClearImage(1)">
+                            <mat-icon>close</mat-icon>
+                        </label>
+                        <input id="image2" type="file" [hidden]="true" accept="image/*"
+                            (change)="onFileSelected($event, 1);" formControlName="image2">
+                        <div *ngIf="previewUrls[1]" class="container-img-preview">
+                            <img [src]="previewUrls[1]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 3 Opcional</h5>
+                        <label for="image3" id="icon-image" class="btn btn-primary">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </label>
+                        <label *ngIf="previewUrls[2]" class="btn btn-danger" (click)="ClearImage(2)">
+                            <mat-icon>close</mat-icon>
+                        </label>
+                        <input id="image3" type="file" [hidden]="true" accept="image/*"
+                            (change)="onFileSelected($event, 2);" formControlName="image3">
+                        <div *ngIf="previewUrls[2]" class="container-img-preview">
+                            <img [src]="previewUrls[2]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-3">
+                <mat-card>
+                    <mat-card-content>
+                        <h5>Imagen 4 Opcional</h5>
+                        <label for="image4" id="icon-image" class="btn btn-primary">
+                            <mat-icon>cloud_upload</mat-icon>
+                        </label>
+                        <label *ngIf="previewUrls[3]" class="btn btn-danger" (click)="ClearImage(3)">
+                            <mat-icon>close</mat-icon>
+                        </label>
+                        <input id="image4" type="file" [hidden]="true" accept="image/*"
+                            (change)="onFileSelected($event, 3);" formControlName="image4">
+                        <div *ngIf="previewUrls[3]" class="container-img-preview">
+                            <img [src]="previewUrls[3]" alt="Image preview" />
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <mat-dialog-actions>
+            <button mat-raised-button [disabled]="ocultarBoton" color="primary" (click)="register()">Registrar</button>
+            <button mat-raised-button [mat-dialog-close] color="warn">Cancelar</button>
+            <mat-progress-bar mode="indeterminate" [hidden]="progress_bar"></mat-progress-bar>
+        </mat-dialog-actions>
+    </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+    <div>
+        <h1>{{titulo}} </h1>
+    </div>
+    <form [formGroup]="form">
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name">
+            <mat-error *ngIf="form.get('name')?.hasError('required')">El nombre del tipo de pago es
+                obligatorio.</mat-error>
+        </mat-form-field>
+        <br />
+        <div class="container-button">
+            <button mat-raised-button [disabled]="form.invalid" (click)="create()" color="primary">{{titulo}}</button>
+            <button mat-raised-button (click)="closeDialog()" color="warn">Cancelar</button>
+        </div>
+    </form>
+</div>

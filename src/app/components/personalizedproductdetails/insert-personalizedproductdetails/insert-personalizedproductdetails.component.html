@@ -1,0 +1,65 @@
+<div class="title-container">
+  <h2 class="title">Registrar un detalle personalizado existente a producto</h2>
+  <mat-divider></mat-divider>
+  <form [formGroup]="form" (submit)="registrar()" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Nombre del Producto</mat-label>
+      <input matInput formControlName="nombreProducto" readonly />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Detalle Personalizado</mat-label>
+      <mat-select
+        formControlName="detallePersonalizado"
+        (selectionChange)="onSelectionChange($event.value)"
+      >
+        <mat-option *ngFor="let pd of listPersonalizaciones" [value]="pd">
+          {{ pd.namePersonalizedDetail }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('detallePersonalizado')?.hasError('required')">
+        El campo es obligatorio.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-divider></mat-divider>
+
+    <div class="button-container">
+      <button
+        mat-raised-button
+        color="primary"
+        class="btn-accept"
+        type="submit"
+      >
+        Aceptar
+      </button>
+
+      <button
+        mat-raised-button
+        color="warn"
+        [routerLink]="'/products'"
+        class="btn-cancel"
+      >
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="datos-card">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Resumen del personalizado</mat-card-title>
+        <mat-card-subtitle>{{
+          selectedPersonalizado?.namePersonalizedDetail
+        }}</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      <br>
+      <p><strong>Producto:</strong> {{ nombreProducto?.nameProduct }}</p>
+      <p><strong>Precio total:</strong> {{ totalPrice | currency:'S/ ':'symbol':'1.2-2' }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>

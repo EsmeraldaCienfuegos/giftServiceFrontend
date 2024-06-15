@@ -1,0 +1,22 @@
+<mat-card class="chatbot-card">
+    <mat-card-header>
+        <mat-card-title>{{ entrepreneurshipName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="chatbot-content">
+        <!-- Aquí va el contenido del chatbot que será desplazable -->
+        <div class="chat-messages">
+            <ng-container *ngFor="let message of conversations; let i = index">
+                <div [ngClass]="{'entrepreneurship-message': message.entrepreneurship.id === 0, 'user-message': message.entrepreneurship.id !== 0}"
+                    class="message-container">
+                    <p>{{ message.textConversation }}</p>
+                </div>
+            </ng-container>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <mat-form-field class="chat-input" appearance="outline">
+            <input matInput placeholder="Write a message" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="sendMessage()">Send</button>
+    </mat-card-actions>
+</mat-card>

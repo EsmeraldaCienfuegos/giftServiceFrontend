@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="text-center">
+        <br>
+        <h1>Notificaciones</h1>
+    </div>
+
+    <div class="mb-3">
+        <button mat-flat-button (click)="OpenModalRegister()" class="botonRegistrar">Registrar Notificación</button>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+        <!-- Position Column -->
+        <ng-container matColumnDef="codigoNotificacion">
+            <th mat-header-cell *matHeaderCellDef>Código</th>
+            <td mat-cell *matCellDef="let element"> {{element.idNotification}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="fechaEmision">
+            <th mat-header-cell *matHeaderCellDef> Fecha de Emisión </th>
+            <td mat-cell *matCellDef="let element"> {{element.emissionDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mensajeNotificacion">
+            <th mat-header-cell *matHeaderCellDef> Mensaje </th>
+            <td mat-cell *matCellDef="let element"> {{element.message}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="editar" class="acciones">
+            <th mat-header-cell *matHeaderCellDef>Editar</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button class="botonEditar" (click)="Modificate(element.idNotification)">
+                    <mat-icon>edit</mat-icon> </button>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="eliminar" class="acciones">
+            <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-raised-button class="botonEliminar"
+                    (click)="deletee(element.idNotification)"><mat-icon>delete_forever</mat-icon></button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <br>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Selecciona una página">
+    </mat-paginator>
+
+
+</div>

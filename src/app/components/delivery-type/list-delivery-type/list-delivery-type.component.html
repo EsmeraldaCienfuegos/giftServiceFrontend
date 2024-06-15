@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="text-center">
+    <h1>Lista Tipo de entrega</h1>
+  </div>
+
+  <div class="mb-3">
+    <button mat-flat-button (click)="OpenModalRegister()" color="primary">
+      Register Type Delivery
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="codigoTipoEntrega">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Código
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">
+        {{ element.idDeliveryType }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="nombreTipoEntrega">
+      <th mat-header-cell *matHeaderCellDef style="text-align: center">
+        Tipo de entrega
+      </th>
+      <td mat-cell *matCellDef="let element" style="text-align: center">{{ element.nameDeliveryType }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="accion1" class="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="Modificate(element.idDeliveryType)">
+          <mat-icon>edit</mat-icon> </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accion2" class="acciones">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn"
+          (click)="deletee(element.idDeliveryType)"><mat-icon>delete_forever</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <br />
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10]" aria-label="Select page">
+  </mat-paginator>
+</div>

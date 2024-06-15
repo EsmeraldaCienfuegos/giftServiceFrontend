@@ -1,0 +1,30 @@
+.title-container {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+.title { 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2em;
+    color: #333;
+}
+
+mat-form-field {
+    width: 70%;
+}
+
+.botonRegistrar{
+    background-color: #ec3740;
+    color: #ffffff;
+}
+
+.botonEditar{
+    background-color: #fff129;
+    color:#000000;
+}
+
+.botonEliminar{
+    background-color: #ec3740;
+}

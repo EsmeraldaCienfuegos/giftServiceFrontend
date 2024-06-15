@@ -1,0 +1,169 @@
+<form [formGroup]="form" (submit)="registrar()">
+  <mat-accordion class="example-headers-align">
+    <!-- PRIMERO - EMPRENDIMIENTO-->
+    <mat-expansion-panel
+      [expanded]="step === 0"
+      (opened)="setStep(0)"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Mi emprendimiento </mat-panel-title>
+        <mat-panel-description>
+          Elige tu emprendimiento
+          <mat-icon>store_mall_directory</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-form-field class="center-select">
+        <mat-label>Nombre del Emprendimiento</mat-label>
+        <mat-select formControlName="NombreEmprendimiento">
+          <mat-option *ngFor="let e of listEntrepreneurships" [value]="e.id">
+            {{ e.nameEntrepreneurship }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="form.get('NombreEmprendimiento')?.hasError('required')"
+        >
+          El Nombre del emprendimiento es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button color="primary" type="button" (click)="nextStep()">
+          Siguiente
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <!-- SEGUNDO - DESCRIPCION -->
+    <mat-expansion-panel
+      [expanded]="step === 1"
+      (opened)="setStep(1)"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Detalle personalizado </mat-panel-title>
+        <mat-panel-description>
+          Descripción del nuevo detalle personalizado
+          <mat-icon>tune</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Detalle personalizado</mat-label>
+        <input
+          matInput
+          placeholder="Escribe tu descripción"
+          formControlName="descripcion"
+          #descripcionInput
+        />
+        <mat-hint>{{ descripcionInput.value.length }} / 100</mat-hint>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
+          La descripción es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="descripcionInput.value.length > 100">
+          La descripción no puede tener más de 100 caracteres.
+        </mat-error>
+      </mat-form-field>
+      <mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">
+          Anterior
+        </button>
+        <button mat-button type="button" color="primary" (click)="nextStep()">
+          Siguiente
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <!-- TERCER - PRECIO -->
+    <mat-expansion-panel
+      [expanded]="step === 2"
+      (opened)="setStep(2)"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Precio Adicional </mat-panel-title>
+        <mat-panel-description>
+          Ingrese el precio total por el detalle
+          <mat-icon>attach_money</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Ingrese precio</mat-label>
+        <input matInput placeholder="Precio" formControlName="precio" />
+        <span matTextPrefix>S/ &nbsp;</span>
+        <mat-error *ngIf="form.get('precio')?.hasError('required')">
+          El precio es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('precio')?.hasError('max')">
+          El precio adicional no puede superar los 50 soles.
+        </mat-error>
+        <mat-error *ngIf="form.get('precio')?.hasError('pattern')">
+          El precio solo puede contener números.
+        </mat-error>
+        <mat-error *ngIf="form.get('precio')?.hasError('min')">
+          El precio debe tener un valor positivo.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">
+          Anterior
+        </button>
+        <button mat-button type="button" color="primary" (click)="nextStep()">
+          Siguiente
+        </button>
+      </mat-action-row>
+    </mat-expansion-panel>
+
+    <!-- CUARTO - IMAGEN -->
+    <mat-expansion-panel
+      [expanded]="step === 3"
+      (opened)="setStep(3)"
+      hideToggle
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> Imagen </mat-panel-title>
+        <mat-panel-description>
+          Suba su imagen del diseño personalizado
+          <mat-icon>add_photo_alternate</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="info-message" *ngIf="edicion">
+        <mat-icon class="info-icon">info</mat-icon>
+        <span class="info-text">
+          Si va a actualizar los datos o desea cambiar la imagen, por favor,
+          suba una nuevamente la foto o una nueva. Disculpe las molestias. Atte. GiftService.
+        </span>
+      </div>
+
+      <!--  registar  -->
+      <div class="input-group">
+        <input
+          type="file"
+          class="form-control file-input"
+          id="image"
+          accept="image/*"
+          (change)="upload($event)"
+          formControlName="imageFile"
+        />
+      </div>
+
+      <div *ngIf="lookImagen" class="uploaded-images">
+        <img [src]="lookImagen" alt="Imagen subida" />
+      </div>
+
+      <mat-action-row>
+        <button mat-button type="button" color="warn" (click)="prevStep()">
+          Anterior
+        </button>
+        <button mat-button color="primary">Finalizar registro</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+</form>
+
+<button mat-button color="primary" [routerLink]="['/personalizedDetail']">
+  REGRESAR A LA LISTA
+</button>

@@ -1,0 +1,19 @@
+<div class="title-container ">
+  <div>
+    <h1>{{titulo}} Delivery</h1>
+  </div>
+  <form [formGroup]="form" (submit)="registrar()">
+    <mat-form-field>
+      <mat-label>Tipo de Delivery</mat-label>
+      <input matInput formControlName="nombreTypeDelivery" />
+      <mat-error *ngIf="form.get('nombreTypeDelivery')?.hasError('required')">El tipo del Delivery es
+        obligatorio</mat-error>
+      <mat-error *ngIf="form.get('nombreTypeDelivery')?.hasError('pattern')">El tipo del Delivery no puede contener
+        números</mat-error>
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary">
+      {{titulo}}
+    </button>
+  </form>
+</div>

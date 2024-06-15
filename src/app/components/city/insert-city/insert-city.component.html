@@ -1,0 +1,29 @@
+<div class="title-container ">
+    <div><br><h1>{{titulo}} Ciudad</h1>
+    </div>
+    <br>
+    <form [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>País</mat-label>
+        <mat-select formControlName="pais">
+          <mat-option *ngFor="let c of listaPaises" [value]="c.idCountry">
+            {{ c.nameCountry }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('pais')?.hasError('required')">El país es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ciudad</mat-label>
+        <input matInput formControlName="nombre" />
+        <mat-error *ngIf="form.get('nombre')?.hasError('required')">El nombre de la ciudad es obligatorio.</mat-error>
+        <mat-error *ngIf="form.get('nombre')?.hasError('pattern')">El nombre de la ciudad solo puede contener letras y espacios.</mat-error>
+      </mat-form-field>
+      <br/>
+      <div class="button-container">
+        <button mat-raised-button class="botonRegistrarCiudad" (click)="registrar()">{{titulo}}</button> 
+        <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+      </div>
+    </form>
+  </div>

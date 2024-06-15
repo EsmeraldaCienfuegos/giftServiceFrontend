@@ -1,0 +1,26 @@
+
+<div class="container">
+    <form [formGroup]="form" >
+        <h3 class="m-3">{{titulo}} Recip Type</h3>
+        <mat-dialog-content class="contend">
+            <mat-form-field>
+                <mat-label>Insert the Name</mat-label>
+                <input matInput formControlName="name">
+                <mat-error *ngIf="form.get('name')?.hasError('required')">
+                    El nombre del tipo de recibo es obligatorio.</mat-error>  
+            </mat-form-field>
+        </mat-dialog-content>
+        
+        <mat-dialog-actions>
+            <button mat-raised-button [mat-dialog-close] 
+            [disabled]="form.invalid" 
+            color="primary" 
+            (click)="register()">{{titulo}}</button>
+            
+            <button mat-raised-button [mat-dialog-close] color="warn" >Cancel</button>
+        </mat-dialog-actions>
+    </form>
+</div>
+
+
+

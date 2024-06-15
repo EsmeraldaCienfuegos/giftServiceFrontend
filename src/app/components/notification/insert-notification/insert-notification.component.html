@@ -1,0 +1,43 @@
+<div class="title-container ">
+    <div><br><h1>{{titulo}} Notificación</h1>
+    </div>
+    <br>
+    <form [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="userweb">
+          <mat-option *ngFor="let c of listaUsuarios" [value]="c.idUser">
+            {{ c.username }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('userweb')?.hasError('required')">El usuario es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Fecha de Emisión</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          formControlName="fechaemision"
+          [min]="minFecha"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error *ngIf="form.get('fechaemision')?.hasError('required')">La fecha de emisión es obligatoria.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Mensaje de Notificación</mat-label>
+        <input matInput formControlName="mensaje" />
+        <mat-error *ngIf="form.get('mensaje')?.hasError('required')">El mensaje de la notificación es obligatorio.</mat-error>
+      </mat-form-field>
+      <br/>
+      <div class="button-container">
+        <button mat-raised-button class="botonRegistrarNotificacion" (click)="registrar()">{{titulo}}</button>
+        <button mat-raised-button (click)="close()" color="warn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
